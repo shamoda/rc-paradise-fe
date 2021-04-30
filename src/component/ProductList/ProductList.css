@@ -1,0 +1,13 @@
+.search {
+    margin-top: 15px;
+    justify-content: center;
+}
+.button {
+    background-image: linear-gradient(to bottom right, red, yellow);
+}
+
+.input {
+    border-width: 1px;
+    border-color: orange;
+    width: 25% !important;
+}

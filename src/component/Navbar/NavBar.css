@@ -1,0 +1,30 @@
+.navbg {
+    background-image: linear-gradient(to bottom right, red, yellow);
+    height: 80px;
+    padding: 30px;
+}
+
+.name {
+    font-family: 'Original Surfer', cursive;
+    text-decoration: none !important;
+    font-size: 28px;
+    font-weight: 600;
+    color: white;
+}
+
+.name:hover {
+    font-family: 'Original Surfer', cursive;
+    text-decoration: none !important;
+    font-size: 28px;
+    font-weight: 600;
+    color: white;
+}
+
+.button {
+    background-image: linear-gradient(to right bottom, yellow, red );
+    padding-left: 20px;
+    padding-right: 20px;
+    font-weight: 600;
+    margin-right: 20px;
+}
+
