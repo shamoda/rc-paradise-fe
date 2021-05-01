@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, FormControl, Button } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 
 import './Registration.css';
 
@@ -10,6 +10,7 @@ class Registration extends Component {
         return ( 
             <div className = "registration">
                 <Form autocomplete="off"  >
+                    <Form.Label style={{fontSize:"25px", marginBottom:"15px"}}>Register</Form.Label>
                     <Form.Group controlId="phone">
                         <Form.Label>Phone number</Form.Label>
                         <Form.Control type="text" placeholder="Enter phone" className = "registration-input" />
@@ -35,7 +36,7 @@ class Registration extends Component {
                         </Form.Control>
                     </Form.Group>
                     <Button variant="outline-light" type="submit" className = "registration-button">
-                        Submit
+                        Register
                     </Button>
                 </Form>
             </div>

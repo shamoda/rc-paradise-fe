@@ -14,9 +14,9 @@ class NavBar extends Component {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" className="ml-auto"/>
                 <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="ml-auto">
-                    <Button variant="outline-light" className="button">Home</Button>
-                    <Button variant="outline-light" className="button">Login</Button>
-                    <Button variant="outline-light" className="button">Register</Button>
+                    <Link className="nav-link" to="/"><Button variant="outline-light" className="button">Home</Button></Link>
+                    <Link className="nav-link" to="/login"><Button variant="outline-light" className="button">Login</Button></Link>
+                    <Link className="nav-link" to="/register"><Button variant="outline-light" className="button">Register</Button></Link>
                 </Nav>
                 </Navbar.Collapse>
                 </Navbar>

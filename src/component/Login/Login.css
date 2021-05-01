@@ -1,16 +1,17 @@
-.registration {
-    padding-top: 5%;
+.login {
+    padding-top: 9%;
     display: flex;
     justify-content: center;
     font-weight: 600;
 }
 
-.registration-input {
+.login-input {
     border-width: 2px;
     border-color: orange;
+    width: 330px;
 }
 
-.registration-button {
+.login-button {
     background-image: linear-gradient(to right bottom, yellow, red );
     padding-left: 20px;
     padding-right: 20px;
