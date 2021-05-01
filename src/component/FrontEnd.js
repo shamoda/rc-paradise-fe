@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {BrowserRouter as Router, Route, Switch, withRouter} from 'react-router-dom';
 import NavBar from './Navbar/NavBar';
 import ProductList from './ProductList/ProductList';
+import Registration from './Registration/Registration';
 
 class FrontEnd extends Component {
     render() { 
@@ -13,7 +14,8 @@ class FrontEnd extends Component {
 
                         
                         </Switch>
-                    <ProductList/>
+                    {/* <ProductList/> */}
+                    <Registration/>
                 </Router>
             </div>
          );

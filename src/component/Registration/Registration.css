@@ -1,0 +1,19 @@
+.registration {
+    padding-top: 6%;
+    display: flex;
+    justify-content: center;
+    font-weight: 600;
+}
+
+.registration-input {
+    border-width: 2px;
+    border-color: orange;
+}
+
+.registration-button {
+    background-image: linear-gradient(to right bottom, yellow, red );
+    padding-left: 20px;
+    padding-right: 20px;
+    font-weight: 600;
+    margin-top: 20px;
+}
