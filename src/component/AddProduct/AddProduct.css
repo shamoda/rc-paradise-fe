@@ -1,0 +1,21 @@
+.addproduct {
+    padding-top: 5%;
+    padding-bottom: 5%;
+    display: flex;
+    justify-content: center;
+    font-weight: 600;
+}
+
+.addproduct-input {
+    border-width: 2px;
+    border-color: orange;
+    width: 800px;
+}
+
+.addproduct-button {
+    background-image: linear-gradient(to right bottom, red, yellow );
+    padding-left: 20px;
+    padding-right: 20px;
+    font-weight: 600;
+    margin-top: 20px;
+}
