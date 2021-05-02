@@ -1,29 +1,31 @@
 import React, { Component } from 'react';
 import { Form, FormControl, Button, Card, ListGroup, ListGroupItem, Row, Col, Container, Table } from 'react-bootstrap';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import { faCartPlus, faEye, faSearch } from '@fortawesome/free-solid-svg-icons';
-import ProductListDataService from './ProductListDataService';
+import { faCartPlus, faEdit, faEye, faPlus, faSearch, faTrash, faHandPointUp, faHandPointDown } from '@fortawesome/free-solid-svg-icons';
 
-import './ProductList.css';
-import logo from '../../asset/logo1.png'
+import MyParadiseDataService from './MyParadiseDataService';
+import './MyParadise.css';
 
-class ProductList extends Component {
-
+class MyParadise extends Component {
+    
     constructor(props){
         super(props);
         this.state = {
             products:[],
+            sellerId:231,
             query: '',
             qty: 1,
             message: null
         }
 
-        this.onViewClick = this.onViewClick.bind(this);
+        this.onUpdateClicked = this.onUpdateClicked.bind(this);
+        this.onDeleteClicked = this.onDeleteClicked.bind(this);
+        this.addProductClicked = this.addProductClicked.bind(this);
         this.refreshProducts = this.refreshProducts.bind(this);
     }
 
     refreshProducts(){
-        ProductListDataService.retrieveAllProducts(this.state.query)
+        MyParadiseDataService.retrieveAllProductsBySeller(this.state.sellerId, this.state.query)
             .then(
                 response => {
                     this.setState({products : response.data})
@@ -42,19 +44,45 @@ class ProductList extends Component {
         }, () => this.refreshProducts());
     };
 
-    onViewClick(productId) {
-        return this.props.history.push('/product/'+productId);
+    onUpdateClicked(productId) {
+        return this.props.history.push('/addproduct/'+productId);
     }
-    
+
+    onDeleteClicked(productId) {
+        MyParadiseDataService.deleteProduct(productId)
+        .then(
+            response => {
+                this.setState({message: response.data})
+                this.refreshProducts()
+            }, 
+        )
+    }
+
+    addProductClicked() {
+        return this.props.history.push('/addproduct');
+    }
 
     render() { 
         return ( 
             <div>
-                
                 <Form inline autocomplete="off" className="search">
-                    <FormControl type="text" placeholder="Start typing to search" name="query" value={this.state.query} onChange={this.handleChange} className=" mr-sm-2 input" />
-                    {/* <Button type="submit" className="button"><FontAwesomeIcon icon={faSearch} /></Button> */}
+                    <FormControl type="text" placeholder="Start typing to find your products" name="query" value={this.state.query} onChange={this.handleChange} className=" mr-sm-2 input" />
+                    {/* <Button style={{height:"35px", marginLeft:"26px"}} className="button"><FontAwesomeIcon icon={faSearch} /></Button> */}
                 </Form>
+
+                <div style={{margin:"20px 100px", textAlign:"center"}}>
+                    <Row>
+                        <Col style={{textAlign:"left"}}>
+                            <p style={{fontSize:"20px", fontWeight:"400", fontFamily: 'Original Surfer'}}>Welcome back Shamoda,</p>
+                        </Col>
+                        <Col style={{textAlign:"center"}}>
+                            { this.state.message && <p style={{color:"red", fontWeight:"600"}}>{this.state.message}</p> }
+                        </Col>
+                        <Col style={{textAlign:"right"}}>
+                            <Button onClick={this.addProductClicked} style={{marginRight:"0px"}} className="button"><FontAwesomeIcon icon={faPlus} /> Add new product</Button>
+                        </Col>
+                    </Row>
+                </div>
 
                 <div style={{margin:"0 100px"}}>
                     <Card className={"border text-white"} style={{border:"none"}}> 
@@ -63,7 +91,10 @@ class ProductList extends Component {
                             <tbody>
                                 {this.state.products.length === 0 ? 
                                 <tr align="center">
-                                    <td colSpan="9" ><FontAwesomeIcon icon={faEye} /> No matching products found</td>
+                                    <td colSpan="9" ><FontAwesomeIcon icon={faEye} /> No records found
+                                    {/* <Button onClick={this.addProductClicked} style={{marginRight:"0px", marginTop:"20px"}} className="button"><FontAwesomeIcon icon={faPlus} /> Start selling</Button> */}
+                                     </td>
+                                    
                                 </tr> :
 
                                 this.state.products.map((product) => (
@@ -82,11 +113,10 @@ class ProductList extends Component {
                                             {/* <p>Quantity available: {product.qty}</p> */}
                                             {/* <hr style={{backgroundColor:"black"}} /> */}
                                         </td>
-                                        <td style={{border:"none",  background:"", padding:"20px 25px", textAlign:"center"}}>
-                                            <p style={{fontSize:"25px", fontWeight:"600"}}>US ${product.price}</p>
-                                            <Form inline onSubmit={() => this.onViewClick(product.productId)} className="search">
-                                                {/* <span style={{fontWeight:"600"}}>Qty: </span>&nbsp;&nbsp;<FormControl defaultValue="1" id="qty" name="qty" size="sm" type="number" min="1" max="9" className=" mr-sm-2 qty" />  */}
-                                                <Button  type="submit" style={{height:"35px", marginLeft:"26px"}} className="button"><FontAwesomeIcon icon={faEye} /> View</Button>
+                                        <td style={{border:"none",  background:"", padding:"25px 25px", textAlign:"center"}}>
+                                            <Form inline className="search">
+                                                <Button onClick={() => this.onUpdateClicked(product.productId)}  style={{height:"35px", marginLeft:"26px"}} className="button"><FontAwesomeIcon icon={faEdit} /> </Button>
+                                                <Button onClick={() => this.onDeleteClicked(product.productId)}  style={{height:"35px", marginLeft:"26px", background:"red"}} className="button"><FontAwesomeIcon icon={faTrash} /> </Button>
                                             </Form>
                                         </td>
                                     </tr>
@@ -97,11 +127,10 @@ class ProductList extends Component {
                         </Card.Body>
                     </Card>
                 </div>
+
             </div>
          );
     }
 }
  
-export default ProductList;
-
-
+export default MyParadise;

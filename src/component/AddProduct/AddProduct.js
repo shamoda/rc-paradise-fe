@@ -11,7 +11,7 @@ class AddProduct extends Component {
         this.state = {
             productId : this.props.match.params.productId,
             name:null,
-            sellerId:null,
+            sellerId:123,
             description:null,
             price:null,
             qty:null,
@@ -73,7 +73,7 @@ class AddProduct extends Component {
         if(this.state.productId != null) {
             formData.append('productId', this.state.productId);
         }
-        formData.append('sellerID', '231');
+        formData.append('sellerID', this.state.sellerId);
         formData.append('name', this.state.name);
         formData.append('description', this.state.description);
         formData.append('price', this.state.price);
@@ -87,13 +87,13 @@ class AddProduct extends Component {
             AddProductDataService.updateProduct(formData)
             .then(response => {
             console.log(response)
-            this.props.history.push('/');
+            this.props.history.push('/myparadise');
             })
         } else {
             AddProductDataService.uploadProduct(formData)
             .then(response => {
                 console.log(response)
-                this.props.history.push('/');
+                this.props.history.push('/myparadise');
             })
         }
     }

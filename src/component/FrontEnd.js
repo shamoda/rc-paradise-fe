@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {BrowserRouter as Router, Route, Switch, withRouter} from 'react-router-dom';
 import AddProduct from './AddProduct/AddProduct';
 import Login from './Login/Login';
+import MyParadise from './MyParadise/MyParadise';
 import NavBar from './Navbar/NavBar';
 import Product from './Product/Product';
 import ProductList from './ProductList/ProductList';
@@ -18,6 +19,7 @@ class FrontEnd extends Component {
                             <Route path="/addproduct/:productId" component={AddProduct}/>
                             <Route path="/addproduct" component={AddProduct}/>
                             <Route path="/product/:productId" component={Product}/>
+                            <Route path="/myparadise" component={MyParadise}/>
                             <Route path="/login" component={Login}/>
                             <Route path="/register" component={Registration}/>
                         
