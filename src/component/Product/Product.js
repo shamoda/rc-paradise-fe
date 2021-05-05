@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { Form, FormControl, Button, Card, ListGroup, ListGroupItem, Row, Col, Container, Table } from 'react-bootstrap';
+import { Form, FormControl, Button, Card, Table } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCartPlus, faEye, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 import ProductDataService from './ProductDataService';
 
 import './Product.css';
-import logo from '../../asset/logo1.png'
+import Authentication from '../../authentication/Authentication'
 
 class Product extends Component {
     
@@ -22,7 +23,8 @@ class Product extends Component {
             manufacturer:null,
             rDistance:null,
             image:null,
-            cartQty: 1
+            cartQty: 1,
+            addedToCart: false
         }
         this.onAddToCartClicked = this.onAddToCartClicked.bind(this);
     }
@@ -49,9 +51,6 @@ class Product extends Component {
     }
 
     onAddToCartClicked(event) {
-        // add this to the login
-        // var products = [];
-        // localStorage.setItem("cart", JSON.stringify(products));
         event.preventDefault();
         var cart = JSON.parse(localStorage.getItem("cart"));
         var product = { "productId" : this.state.productId,
@@ -63,6 +62,10 @@ class Product extends Component {
         cart.push(product);
 
         localStorage.setItem("cart", JSON.stringify(cart));
+        this.setState({addedToCart: true})
+        setTimeout(() => {
+            this.props.history.push('/');
+        }, 3000)
     }
 
     handleChange = event =>{
@@ -72,6 +75,20 @@ class Product extends Component {
     };
 
     render() { 
+
+        const isUserLoggedIn = Authentication.isUserLoggedIn();
+        const loggedUserRole = Authentication.loggedUserRole();
+
+        let loggedAsSeller = false;
+        let loggedAsBuyer = false;
+
+        if(loggedUserRole != null && loggedUserRole === 'seller'){
+            loggedAsSeller = true;
+        }
+        if(loggedUserRole != null && loggedUserRole === 'buyer'){
+            loggedAsBuyer = true;
+        }
+
         return ( 
             <div>
                 <div style={{margin:"100px 100px"}}>
@@ -93,10 +110,21 @@ class Product extends Component {
                                         </td>
                                         <td style={{border:"none",  background:"", padding:"65px 25px", textAlign:"center"}}>
                                             <p style={{fontSize:"25px", fontWeight:"600"}}>US ${this.state.price}</p>
-                                            <Form inline onSubmit={this.onAddToCartClicked} className="search">
-                                                <span style={{fontWeight:"600"}}>Qty: </span>&nbsp;&nbsp;<FormControl value={this.state.cartQty} name="cartQty" onChange={this.handleChange} size="sm" type="number" min="1" max="9" className=" mr-sm-2 qty" /> 
-                                                <Button  type="submit" style={{height:"35px", marginLeft:"26px"}} className="button"><FontAwesomeIcon icon={faCartPlus} /> </Button>
-                                            </Form>
+
+
+                                            {isUserLoggedIn ? 
+                                                loggedAsBuyer ? 
+                                                    <Form inline onSubmit={this.onAddToCartClicked} className="search">
+                                                        <span style={{fontWeight:"600"}}>Qty: </span>&nbsp;&nbsp;<FormControl value={this.state.cartQty} name="cartQty" onChange={this.handleChange} size="sm" type="number" min="1" max="9" className=" mr-sm-2 qty" /> 
+                                                        <Button  type="submit" style={{height:"35px", marginLeft:"26px"}} className="button"><FontAwesomeIcon icon={faCartPlus} /> </Button>
+                                                        {this.state.addedToCart && <p style={{color:"green", fontWeight:"600", padding:"5px"}}>added to cart & redirecting...</p>}
+                                                    </Form> 
+                                                : 
+                                                <p style={{color:"red", fontWeight:"600"}}>- you are not a buyer -</p>
+                                            : 
+                                                <Link className="nav-link" to="/login" style={{color:"red", fontWeight:"600"}}>please login to purchase</Link>}
+
+
                                         </td>
                                     </tr>
                                     </tbody>

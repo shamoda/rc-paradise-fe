@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Spinner } from 'react-bootstrap';
 
 import './AddProduct.css';
 import AddProductDataService from './AddProductDataService';
@@ -22,7 +22,8 @@ class AddProduct extends Component {
             image:null,
             imageUrl:null,
             imageName:null,
-            imageSelected:false
+            imageSelected:false,
+            clicked: false
         }
         this.onFileChange = this.onFileChange.bind(this);
         this.saveProduct = this.saveProduct.bind(this);
@@ -70,6 +71,7 @@ class AddProduct extends Component {
 
     saveProduct(event) {
         event.preventDefault();
+        this.setState({clicked: true})
         let formData = new FormData();
         if(this.state.productId != null) {
             formData.append('productId', this.state.productId);
@@ -102,7 +104,7 @@ class AddProduct extends Component {
     render() { 
         return ( 
             <div className = "addproduct">
-                <Form autocomplete="off" onSubmit={this.saveProduct} >
+                <Form autoComplete="off" onSubmit={this.saveProduct} >
                     <Form.Label style={{fontSize:"25px", marginBottom:"15px"}}>Add Product</Form.Label>
                     <Form.Group controlId="name">
                         <Form.Label>Name</Form.Label>
@@ -148,8 +150,10 @@ class AddProduct extends Component {
                     : ''}
                     <br/>
                     <Button variant="outline-light" type="submit" className = "addproduct-button">
-                        Add Product
+                    {this.state.clicked && <Spinner style={{padding:"0px", marginRight:"12px"}} as="span" animation="grow" size="sm" role="status" aria-hidden="true" />}
+                        Add Product 
                     </Button>
+                    
                 </Form>
             </div>
          );

@@ -7,6 +7,8 @@ class Athentication {
         sessionStorage.setItem('authenticatedUserPhone', user.phone);
         sessionStorage.setItem('authenticatedUserName', user.name);
         sessionStorage.setItem('authenticatedUserRole', user.role);
+        var products = [];
+        localStorage.setItem("cart", JSON.stringify(products));
     }
 
     logout(){
@@ -14,6 +16,7 @@ class Athentication {
         sessionStorage.removeItem('authenticatedUserPhone');
         sessionStorage.removeItem('authenticatedUserName');
         sessionStorage.removeItem('authenticatedUserRole');
+        localStorage.removeItem('cart')
     }
 
     isUserLoggedIn(){

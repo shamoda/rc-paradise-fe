@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {BrowserRouter as Router, Route, Switch, withRouter} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import NotFound from './404 Error/NotFound';
 import AddProduct from './AddProduct/AddProduct';
 import Login from './Login/Login';
 import MyParadise from './MyParadise/MyParadise';
@@ -22,7 +23,8 @@ class FrontEnd extends Component {
                             <Route path="/myparadise" component={MyParadise}/>
                             <Route path="/login" component={Login}/>
                             <Route path="/register" component={Registration}/>
-                        
+
+                            <Route component={NotFound}/>
                         </Switch>
                 </Router>
             </div>

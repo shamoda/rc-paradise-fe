@@ -18,7 +18,8 @@ class Login extends Component {
         this.loginClicked = this.loginClicked.bind(this);
     }
 
-    loginClicked() {
+    loginClicked(event) {
+        event.preventDefault();
         AuthenticationDataService.login(this.state.phone, this.state.password)
         .then(
             response => {
@@ -45,7 +46,7 @@ class Login extends Component {
     render() { 
         return ( 
             <div className = "login">
-                <Form autocomplete="off" >
+                <Form autoComplete="off" onSubmit={this.loginClicked} >
                 <Form.Label style={{fontSize:"25px", marginBottom:"15px"}}>Login</Form.Label>
                     <Form.Group controlId="phone">
                         <Form.Label>Phone number</Form.Label>
@@ -59,7 +60,7 @@ class Login extends Component {
                         <Form.Label>Password</Form.Label>
                         <Form.Control onChange={this.handleChange} name="password" value={this.state.password} type="password" placeholder="Enter password" className = "login-input" required />
                     </Form.Group>
-                    <Button variant="outline-light" onClick={this.loginClicked} className = "login-button">
+                    <Button variant="outline-light" type="submit" className = "login-button">
                         Login
                     </Button>
                     {this.state.loginFailed && <Form.Text className="" style={{color:"red", fontWeight:"600"}}>

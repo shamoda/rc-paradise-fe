@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Form, FormControl, Button, Card, ListGroup, ListGroupItem, Row, Col, Container, Table } from 'react-bootstrap';
+import { Form, FormControl, Button, Card, Row, Col, Table } from 'react-bootstrap';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import { faCartPlus, faEdit, faEye, faPlus, faSearch, faTrash, faHandPointUp, faHandPointDown } from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faEye, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 import MyParadiseDataService from './MyParadiseDataService';
 import Authentication from '../../authentication/Authentication'
@@ -66,7 +66,7 @@ class MyParadise extends Component {
     render() { 
         return ( 
             <div>
-                <Form inline autocomplete="off" className="search">
+                <Form inline autoComplete="off" className="search">
                     <FormControl type="text" placeholder="Start typing to find your products" name="query" value={this.state.query} onChange={this.handleChange} className=" mr-sm-2 input" />
                     {/* <Button style={{height:"35px", marginLeft:"26px"}} className="button"><FontAwesomeIcon icon={faSearch} /></Button> */}
                 </Form>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Form, FormControl, Button, Card, ListGroup, ListGroupItem, Row, Col, Container, Table } from 'react-bootstrap';
+import { Form, FormControl, Button, Card, Table } from 'react-bootstrap';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import { faCartPlus, faEye, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faEye } from '@fortawesome/free-solid-svg-icons';
 import ProductListDataService from './ProductListDataService';
 
 import './ProductList.css';
@@ -50,7 +50,7 @@ class ProductList extends Component {
         return ( 
             <div>
                 
-                <Form inline autocomplete="off" className="search">
+                <Form inline autoComplete="off" className="search">
                     <FormControl type="text" placeholder="Start typing to search" name="query" value={this.state.query} onChange={this.handleChange} className=" mr-sm-2 input" />
                     {/* <Button type="submit" className="button"><FontAwesomeIcon icon={faSearch} /></Button> */}
                 </Form>
