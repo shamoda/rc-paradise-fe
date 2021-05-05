@@ -5,7 +5,6 @@ import { faCartPlus, faEye, faSearch } from '@fortawesome/free-solid-svg-icons';
 import ProductListDataService from './ProductListDataService';
 
 import './ProductList.css';
-import logo from '../../asset/logo1.png'
 
 class ProductList extends Component {
 
@@ -63,7 +62,7 @@ class ProductList extends Component {
                             <tbody>
                                 {this.state.products.length === 0 ? 
                                 <tr align="center">
-                                    <td colSpan="9" ><FontAwesomeIcon icon={faEye} /> No matching products found</td>
+                                    <td colSpan="9" ><FontAwesomeIcon icon={faEye} /> No product found</td>
                                 </tr> :
 
                                 this.state.products.map((product) => (

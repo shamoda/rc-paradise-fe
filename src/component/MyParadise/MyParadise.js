@@ -4,6 +4,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faCartPlus, faEdit, faEye, faPlus, faSearch, faTrash, faHandPointUp, faHandPointDown } from '@fortawesome/free-solid-svg-icons';
 
 import MyParadiseDataService from './MyParadiseDataService';
+import Authentication from '../../authentication/Authentication'
 import './MyParadise.css';
 
 class MyParadise extends Component {
@@ -12,7 +13,7 @@ class MyParadise extends Component {
         super(props);
         this.state = {
             products:[],
-            sellerId:231,
+            sellerId: Authentication.loggedUserId(),
             query: '',
             qty: 1,
             message: null
@@ -73,7 +74,7 @@ class MyParadise extends Component {
                 <div style={{margin:"20px 100px", textAlign:"center"}}>
                     <Row>
                         <Col style={{textAlign:"left"}}>
-                            <p style={{fontSize:"20px", fontWeight:"400", fontFamily: 'Original Surfer'}}>Welcome back Shamoda,</p>
+                            <p style={{fontSize:"20px", fontWeight:"400", fontFamily: 'Original Surfer'}}>Welcome back {Authentication.loggedUserName()},</p>
                         </Col>
                         <Col style={{textAlign:"center"}}>
                             { this.state.message && <p style={{color:"red", fontWeight:"600"}}>{this.state.message}</p> }

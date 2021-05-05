@@ -3,6 +3,7 @@ import { Form, Button } from 'react-bootstrap';
 
 import './AddProduct.css';
 import AddProductDataService from './AddProductDataService';
+import Authentication from '../../authentication/Authentication'
 
 class AddProduct extends Component {
 
@@ -11,7 +12,7 @@ class AddProduct extends Component {
         this.state = {
             productId : this.props.match.params.productId,
             name:null,
-            sellerId:123,
+            sellerId:Authentication.loggedUserId(),
             description:null,
             price:null,
             qty:null,
