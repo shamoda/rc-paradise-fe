@@ -1,0 +1,18 @@
+import axios from 'axios'
+
+class CartDataservice {
+
+    createCart(Cart) {
+
+        return axios.post('http://localhost:8080/api/v1/Add', Cart)
+    }
+
+
+    getCart(sellerId) {
+
+        return axios.get(`http://localhost:8080/api/v1/cart/${sellerId}`);
+    }
+
+
+}
+export default new CartDataservice();
