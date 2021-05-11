@@ -1,31 +1,57 @@
 .navbg {
-    background-image: linear-gradient(to bottom right, red, yellow);
-    height: 80px;
-    padding: 30px;
+  background-image: linear-gradient(to bottom right, red, yellow);
+  height: 80px;
+  padding: 30px;
 }
 
 .name {
-    font-family: 'Original Surfer', cursive;
-    text-decoration: none !important;
-    font-size: 28px;
-    font-weight: 600;
-    color: white;
+  font-family: "Original Surfer", cursive;
+  text-decoration: none !important;
+  font-size: 28px;
+  font-weight: 600;
+  color: white;
 }
 
 .name:hover {
-    font-family: 'Original Surfer', cursive;
-    text-decoration: none !important;
-    font-size: 28px;
-    font-weight: 600;
-    color: white;
+  font-family: "Original Surfer", cursive;
+  text-decoration: none !important;
+  font-size: 28px;
+  font-weight: 600;
+  color: white;
 }
 
 .button {
-    background-image: linear-gradient(to right bottom, yellow, red );
-    padding-left: 20px;
-    padding-right: 20px;
-    font-weight: 600;
-    margin-right: 20px;
-    border: none;
+  background-image: linear-gradient(to right bottom, yellow, red);
+  padding-left: 20px;
+  padding-right: 20px;
+  font-weight: 600;
+  margin-right: 20px;
+  border: none;
 }
 
+.header {
+  background: black;
+  color: #fff;
+}
+
+#lblCartCount {
+  font-size: 12px;
+  background: #ff0000;
+  color: #fff;
+  padding: 0 5px;
+  vertical-align: top;
+  margin-left: -10px;
+}
+
+.badge {
+  padding-left: 9px;
+  padding-right: 9px;
+  -webkit-border-radius: 9px;
+  -moz-border-radius: 9px;
+  border-radius: 9px;
+}
+
+.label-warning[href],
+.badge-warning[href] {
+  background-color: #141413;
+}
