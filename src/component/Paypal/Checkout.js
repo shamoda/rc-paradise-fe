@@ -31,10 +31,10 @@ const Checkout = (props) => {
 
         let Email = {
 
-            "to": "senathdonz@gmail.com",
-            "from": "senathweerasingha@gmail.com",
+            "to": "experiment062@gmail.com",
+            "from": "fictionappsdemo@gmail.com",
             "subject": "Delivery System",
-            "name": "Senath"
+            "name": "Shamoda"
 
         }
 
@@ -101,9 +101,7 @@ const Checkout = (props) => {
         </div>
 
 
-    )
-
-        ;
+    );
 }
 
 export default Checkout;

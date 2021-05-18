@@ -85,7 +85,7 @@ class ProductList extends Component {
                                             <p style={{fontSize:"25px", fontWeight:"600"}}>US ${product.price}</p>
                                             <Form inline onSubmit={() => this.onViewClick(product.productId)} className="search">
                                                 {/* <span style={{fontWeight:"600"}}>Qty: </span>&nbsp;&nbsp;<FormControl defaultValue="1" id="qty" name="qty" size="sm" type="number" min="1" max="9" className=" mr-sm-2 qty" />  */}
-                                                <Button  type="submit" style={{height:"35px", marginLeft:"26px"}} className="button"><FontAwesomeIcon icon={faEye} /> View</Button>
+                                                <Button  type="submit" style={{height:"35px", marginLeft:"26px"}} className="productlist-button"><FontAwesomeIcon icon={faEye} /> View</Button>
                                             </Form>
                                         </td>
                                     </tr>

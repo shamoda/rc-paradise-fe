@@ -80,7 +80,7 @@ class MyParadise extends Component {
                             { this.state.message && <p style={{color:"red", fontWeight:"600"}}>{this.state.message}</p> }
                         </Col>
                         <Col style={{textAlign:"right"}}>
-                            <Button onClick={this.addProductClicked} style={{marginRight:"0px"}} className="button"><FontAwesomeIcon icon={faPlus} /> Add new product</Button>
+                            <Button onClick={this.addProductClicked} style={{marginRight:"0px"}} className="myparadise-button"><FontAwesomeIcon icon={faPlus} /> Add new product</Button>
                         </Col>
                     </Row>
                 </div>
@@ -116,8 +116,8 @@ class MyParadise extends Component {
                                         </td>
                                         <td style={{border:"none",  background:"", padding:"25px 25px", textAlign:"center"}}>
                                             <Form inline className="search">
-                                                <Button onClick={() => this.onUpdateClicked(product.productId)}  style={{height:"35px", marginLeft:"26px"}} className="button"><FontAwesomeIcon icon={faEdit} /> </Button>
-                                                <Button onClick={() => this.onDeleteClicked(product.productId)}  style={{height:"35px", marginLeft:"26px", background:"red"}} className="button"><FontAwesomeIcon icon={faTrash} /> </Button>
+                                                <Button onClick={() => this.onUpdateClicked(product.productId)}  style={{height:"35px", marginLeft:"26px"}} className="myparadise-button"><FontAwesomeIcon icon={faEdit} /> </Button>
+                                                <Button onClick={() => this.onDeleteClicked(product.productId)}  style={{height:"35px", marginLeft:"26px", background:"red"}} className="myparadise-button"><FontAwesomeIcon icon={faTrash} /> </Button>
                                             </Form>
                                         </td>
                                     </tr>

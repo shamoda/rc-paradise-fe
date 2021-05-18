@@ -80,6 +80,9 @@ class Product extends Component {
 
 
         this.setState({ addedToCart: true })
+        setTimeout(() => {
+            this.props.history.push('/');
+        }, 2000)
 
     }
 
@@ -131,7 +134,7 @@ class Product extends Component {
                                                 loggedAsBuyer ?
                                                     <Form inline onSubmit={this.onAddToCartClicked} className="search">
 
-                                                        <Button type="submit" style={{ height: "35px", marginLeft: "26px" }} className="button"><FontAwesomeIcon icon={faCartPlus} /> </Button>
+                                                        <Button type="submit" style={{ height: "35px", marginLeft: "26px" }} className="product-button"><FontAwesomeIcon icon={faCartPlus} /> </Button>
                                                         {this.state.addedToCart && <p style={{ color: "green", fontWeight: "600", padding: "5px" }}>added to cart & redirecting...</p>}
                                                     </Form>
                                                     :

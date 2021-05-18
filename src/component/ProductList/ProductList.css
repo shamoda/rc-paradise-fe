@@ -3,8 +3,9 @@
     justify-content: center;
     margin-bottom: 30px;
 }
-.button {
+.productlist-button {
     background-image: linear-gradient(to bottom right, red, yellow);
+    border: none;
 }
 
 .input {
