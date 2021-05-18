@@ -1,8 +1,8 @@
 import axios from 'axios'
 
-class ProductListDataService{
+class ProductListDataService {
 
-    retrieveAllProducts(query){
+    retrieveAllProducts(query) {
         return axios.get(`http://localhost:8080/api/v1/product/search?query=${query}`);
     }
 

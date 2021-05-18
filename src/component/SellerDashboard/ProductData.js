@@ -13,31 +13,21 @@ import CartDataservice from '../AddtoCart/CartDataservice';
 import Authentication from '../../authentication/Authentication'
 const useStyles = makeStyles((theme) => ({
 
-    table: {
-
-
-    },
+    table: {}
+    ,
     tableContainer: {
         borderRadius: 15,
         margin: '60px 40px',
-
-
-
     },
     tableHeaderCell: {
-
         fontWeight: 'bold',
         backgroundImage: 'linear-gradient(to bottom right,pink, yellow)',
-
     },
     name: {
         fontWeight: 'bold',
         color: theme.palette.secondary.dark
     },
-    TableFooter: {
-
-
-    }
+    TableFooter: {}
 
 }))
 

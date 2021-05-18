@@ -22,15 +22,11 @@ import Fedex from "./Fedex.png";
 
 const DeliveryForm = (props) => {
 
-
-
-
-
   return (
 
 
     <FormControl style={{ marginTop: 10 }} component="fieldset">
-      <FormLabel component="legend">Choose a delivery method !!!</FormLabel>
+      <FormLabel component="legend" style={{ marginLeft: 20 }}>Choose a delivery method !!!</FormLabel>
       <RadioGroup row aria-label="position" name="position" value={props.value} onChange={props.handleChange}>
 
         <FormControlLabel

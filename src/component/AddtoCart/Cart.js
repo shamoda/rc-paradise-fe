@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import TablePagination from '@material-ui/core/TablePagination';
 import {
@@ -11,9 +12,6 @@ import {
     Paper,
     Avatar,
     Grid,
-
-
-
 } from '@material-ui/core';
 import { deepOrange, green } from '@material-ui/core/colors';
 
@@ -25,13 +23,13 @@ import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
 import DeliveryForm from './DeliveryForm'
 import './Cart.css'
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-
-
+import PhoneAndroidIcon from '@material-ui/icons/PhoneAndroid';
+import SmsDataService from '../SMS/SmsDataService';
+import Authentication from '../../authentication/Authentication'
 
 const useStyles = makeStyles((theme) => ({
     table: {
         maxWidth: 750
-
     },
     tableContainer1: {
         borderRadius: 15,
@@ -39,15 +37,10 @@ const useStyles = makeStyles((theme) => ({
         marginLeft: -60,
         maxWidth: 1450,
         alignContent: 'center'
-
     },
     tableHeaderCell: {
-
         fontWeight: 'bold',
         backgroundImage: 'linear-gradient(to bottom right,pink, yellow)',
-
-
-
     },
     large: {
         width: theme.spacing(5),
@@ -58,42 +51,28 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: deepOrange[500],
     },
     tableContainer2: {
-
         borderRadius: 15,
         marginLeft: 90,
         margin: '60px 40px ',
         minWidth: 400
-
-
     },
     table1: {
-
         minWidth: 300
     },
     tableHeaderCell1: {
-
         fontWeight: 'bold',
         backgroundImage: 'linear-gradient(to bottom right,pink, yellow)',
         width: 300
     },
     TableRow: {
-
         marginTop: '40px'
     },
     CellMargin: {
-
         marginLeft: 50
     }
 }));
 
-
-
-
-
-
 const Cart = () => {
-
-
 
     const [cart, setcart] = useState([])
     const classes = useStyles();
@@ -101,30 +80,53 @@ const Cart = () => {
     const itemPrice = cart.reduce((a, c) => a + c.price * c.qty, 0)
     const Totalprice = itemPrice + 1500
     const [Checkouts, setCheckout] = useState(false)
-    const [Uber, SetUber] = useState(false)
+    const [Phone, setPhone] = useState(false)
     const [value, setValue] = React.useState('Uber');
+    const [OTP, setOTP] = useState([])
+    let history = useHistory()   //declaring useHistory Hook
+    const sucessMessage = null;
+
 
     const handleChange = (event) => {
-
         setValue(event.target.value);
-
         localStorage.setItem("Deliver", value)
     };
 
+    const onChange = (event) => {
+        setOTP(event.target.value)
+    };
+
+    const handleSMS = () => {
+
+        var userID = {
+            "phoneNumber": Authentication.loggedUserId()
+        }
+
+        setPhone(true)
+        SmsDataService.sendEmail(userID)
+            .then(response => {
+                console.log(response.data)
+            })
+    }
+    const handleSubmit = (event) => {
+
+        event.preventDefault();
+        alert("OTP :" + OTP)
+
+
+
+        localStorage.setItem("cart", JSON.stringify([]))
+    }
     const onAdd = (item) => {
 
         const exist = cart.find(x => x.productId === item.productId)
         if (exist) {
             setcart(cart.map(x => x.productId === item.productId ? { ...exist, qty: exist.qty + 1 } : x))
         } else {
-
             setcart([...cart, { ...item, qty: 1 }])
         }
-
     }
-
     const onRemove = (item) => {
-
         const exist = cart.find(x => x.productId === item.productId)
         if (exist.qty === 1) {
 
@@ -132,24 +134,16 @@ const Cart = () => {
             setcart(newCart)
             localStorage.setItem("cart", JSON.stringify(newCart))
 
-
-
         } else {
-
             setcart(cart.map(x => x.productId === item.productId ? { ...exist, qty: exist.qty - 1 } : x))
         }
-
     }
 
     const itemTotal = (a, b) => {
-
-
         return a * b;
-
     }
+
     const Totals = () => {
-
-
         cart.forEach(function (number) {
             var Tot = 0;
             Tot = number.price * number.qty
@@ -157,7 +151,6 @@ const Cart = () => {
             setTotal(t)
 
         });
-
         return Total
     }
 
@@ -170,15 +163,8 @@ const Cart = () => {
         localStorage.setItem("cart", JSON.stringify(newList))
     }
 
-
     useEffect(() => {
-
-
         setcart(JSON.parse(localStorage.getItem("cart")))
-
-
-
-
     }, []);
 
     return (
@@ -212,20 +198,15 @@ const Cart = () => {
                                                     </Grid>
 
                                                 </Grid>
-
-
                                             </TableCell>
                                             <TableCell align='center'>{c.price}  </TableCell>
                                             <TableCell align='center'>
 
                                                 <Grid container>
-
                                                     <Grid item lg={3}>< AddCircleIcon onClick={() => onAdd(c)} style={{ color: 'green' }} /></Grid>
                                                     <Grid item lg={4}>{c.qty}</Grid>
                                                     <Grid item lg={3}>< RemoveCircleIcon onClick={() => onRemove(c)} style={{ color: 'red' }} /></Grid>
                                                 </Grid>
-
-
                                             </TableCell>
                                             <TableCell align='center'>$&nbsp;{itemTotal(c.price, c.qty)}</TableCell>
 
@@ -241,7 +222,6 @@ const Cart = () => {
                             <Table className={classes.table1} aria-label="simple table">
                                 <TableHead>
                                     <TableRow>
-
                                         <TableCell align='center' className={classes.tableHeaderCell1}>Item</TableCell>
 
                                     </TableRow>
@@ -249,11 +229,7 @@ const Cart = () => {
                                 <TableBody>
 
                                     <TableRow >
-
                                         <TableCell className={classes.CellMargin} align='left'> Item Count  {cart.length}</TableCell>
-
-
-
 
                                     </TableRow>
                                     <TableRow>
@@ -288,28 +264,33 @@ const Cart = () => {
                                             <button className="button" onClick={() => setCheckout(true)}> <span>Checkout </span>  <ShoppingCartIcon /> </button>
                                         )
                                         }
-
-
                                     </TableRow>
+                                    <TableRow>
+                                        {Phone ? (
 
+                                            <div style={{ marginLeft: 60, marginBottom: 10 }}>
+                                                <form onSubmit={handleSubmit}>
+                                                    <input type="text" value={OTP} onChange={onChange} />
+                                                    <input type="submit" value="Submit" />
+                                                </form>
+                                                STATE : {OTP}
+                                            </div>
+
+                                        ) : (
+
+                                            <button className="button" style={{ marginTop: -3 }} onClick={() => { handleSMS() }}> <span>Pay with Mobile </span>  <PhoneAndroidIcon /> </button>
+
+                                        )
+                                        }
+                                    </TableRow>
 
                                 </TableBody>
                             </Table>
-
-
                         </TableContainer>
                     </Col>
                 </Row>
-
-
-
-
             </Container>
-
-
-
-
-        </div>
+        </div >
 
     );
 

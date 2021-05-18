@@ -92,7 +92,7 @@ const Checkout = (props) => {
 
     return (
 
-        <div className="app">
+        <div className="app" style={{ margin: 30 }}>
             <PayPalButton
                 createOrder={(data, actions) => createOrder(data, actions)}
                 onApprove={(data, actions) => onApprove(data, actions)}
