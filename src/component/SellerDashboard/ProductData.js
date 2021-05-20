@@ -6,8 +6,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-
-import Typography, { TableFooter, TablePagination } from '@material-ui/core'
+import { TableFooter, TablePagination } from '@material-ui/core'
 import Paper from '@material-ui/core/Paper';
 import CartDataservice from '../AddtoCart/CartDataservice';
 import Authentication from '../../authentication/Authentication'

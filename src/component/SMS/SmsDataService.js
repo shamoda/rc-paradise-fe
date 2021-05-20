@@ -1,12 +1,15 @@
 import axios from 'axios'
 
-class SmsDataService {
+class smsdataService {
 
     sendEmail(user) {
-        return axios.post(`http://localhost:8080/api/v1/sendSMS`, user);
+        return axios.post(`http://192.168.43.164:8280/cart/sendSMS`, user);
     }
 
+    validateOTP(user) {
 
+        return axios.post(`http://192.168.43.164:8280/cart/validateOTP`, user)
+    }
 
 }
-export default new SmsDataService();
+export default new smsdataService();

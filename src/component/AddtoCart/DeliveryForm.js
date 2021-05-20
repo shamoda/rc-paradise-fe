@@ -1,14 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
-  Avatar,
-  Grid,
   FormControl,
   FormControlLabel,
   RadioGroup,

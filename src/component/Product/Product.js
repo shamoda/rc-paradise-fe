@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import ProductDataService from './ProductDataService';
-
 import './Product.css';
 import Authentication from '../../authentication/Authentication'
 

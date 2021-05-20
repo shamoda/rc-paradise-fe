@@ -1,8 +1,8 @@
 import axios from "axios";
 
 class Athentication {
-    
-    successfulLogin(user, authHead){
+
+    successfulLogin(user, authHead) {
         this.setupAxiosInterceptors(authHead)
         sessionStorage.setItem('authenticatedUserPhone', user.phone);
         sessionStorage.setItem('authenticatedUserName', user.name);
@@ -11,7 +11,7 @@ class Athentication {
         localStorage.setItem("cart", JSON.stringify(products));
     }
 
-    logout(){
+    logout() {
         this.ejectAxiosInterceptor()
         sessionStorage.removeItem('authenticatedUserPhone');
         sessionStorage.removeItem('authenticatedUserName');
@@ -19,19 +19,19 @@ class Athentication {
         localStorage.removeItem('cart')
     }
 
-    isUserLoggedIn(){
+    isUserLoggedIn() {
         let user = sessionStorage.getItem('authenticatedUserPhone');
         if (user === null) return false;
         return true;
     }
 
-    loggedUserId(){
+    loggedUserId() {
         let id = sessionStorage.getItem('authenticatedUserPhone');
         if (id === null) return '';
         return id;
     }
 
-    loggedUserName(){
+    loggedUserName() {
         let name = sessionStorage.getItem('authenticatedUserName');
         if (name === null) return '';
         return name;
@@ -39,7 +39,7 @@ class Athentication {
 
     loggedUserRole() {
         let role = sessionStorage.getItem('authenticatedUserRole');
-        if(role != null) return role;
+        if (role != null) return role;
         return null;
     }
 
@@ -59,5 +59,5 @@ class Athentication {
     }
 
 }
- 
+
 export default new Athentication();
