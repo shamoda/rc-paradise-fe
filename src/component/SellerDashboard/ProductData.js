@@ -6,38 +6,27 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-
-import Typography, { TableFooter, TablePagination } from '@material-ui/core'
+import { TableFooter, TablePagination } from '@material-ui/core'
 import Paper from '@material-ui/core/Paper';
 import CartDataservice from '../AddtoCart/CartDataservice';
 import Authentication from '../../authentication/Authentication'
 const useStyles = makeStyles((theme) => ({
 
-    table: {
-
-
-    },
+    table: {}
+    ,
     tableContainer: {
         borderRadius: 15,
         margin: '60px 40px',
-
-
-
     },
     tableHeaderCell: {
-
         fontWeight: 'bold',
         backgroundImage: 'linear-gradient(to bottom right,pink, yellow)',
-
     },
     name: {
         fontWeight: 'bold',
         color: theme.palette.secondary.dark
     },
-    TableFooter: {
-
-
-    }
+    TableFooter: {}
 
 }))
 
@@ -93,7 +82,6 @@ export default function ProductData() {
 
                         <TableCell className={classes.tableHeaderCell}>Product Name</TableCell>
                         <TableCell className={classes.tableHeaderCell}>Quantity</TableCell>
-                        <TableCell className={classes.tableHeaderCell}>Buyer Name</TableCell>
                         <TableCell className={classes.tableHeaderCell}>Shipping Address</TableCell>
                         <TableCell className={classes.tableHeaderCell}>Delivery Mode</TableCell>
                     </TableRow>
@@ -102,10 +90,10 @@ export default function ProductData() {
                     {cart.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((c) => (
                         <TableRow key={c.pID}>
                             <TableCell align="center" className={classes.name} component="th" scope="row">{c.name} </TableCell>
-                            <TableCell component="th" scope="row">ggg </TableCell>
-                            <TableCell component="th" scope="row">ggg </TableCell>
-                            <TableCell component="th" scope="row">gg</TableCell>
-                            <TableCell component="th" scope="row">{c.buyerAddress} </TableCell>
+                            <TableCell component="th" scope="row">{c.quantity}</TableCell>
+                            <TableCell component="th" scope="row">{c.buyerAddress}</TableCell>
+                            <TableCell component="th" scope="row">{c.deliveryMode}</TableCell>
+
 
 
                         </TableRow>

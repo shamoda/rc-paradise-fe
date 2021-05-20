@@ -10,7 +10,7 @@ class CartDataservice {
 
     getCart(sellerId) {
 
-        return axios.get(`http://localhost:8080/api/v1/cart/${sellerId}`);
+        return axios.get(`http://192.168.43.164:8280/cart/${sellerId}`);
     }
 
 

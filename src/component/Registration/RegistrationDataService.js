@@ -2,8 +2,8 @@ import axios from 'axios'
 
 class RegistrationDataService {
 
-    registerUser(user){
-        return axios.post('http://localhost:8080/api/v1/register/user', user);
+    registerUser(user) {
+        return axios.post('http://192.168.43.164:8280/user/user', user);
     }
 
 }

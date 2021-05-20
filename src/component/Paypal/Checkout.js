@@ -1,19 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import ReactDOM from "react-dom"
 import { useHistory } from "react-router-dom";
 import CartDataservice from "../AddtoCart/CartDataservice"
-import EmailService from "./EmailService";
-
-
 
 const PayPalButton = window.paypal.Buttons.driver("react", { React, ReactDOM });
 
 const Checkout = (props) => {
 
     let history = useHistory();
-    const [cart, setcart] = useState([])
     const TotalAmount = props.Total
-
     const createOrder = (data, actions) => {
         return actions.order.create({
             purchase_units: [
@@ -24,29 +19,6 @@ const Checkout = (props) => {
                 },
             ],
         });
-    }
-
-    const sendEmail = () => {
-
-
-        let Email = {
-
-            "to": "experiment062@gmail.com",
-            "from": "fictionappsdemo@gmail.com",
-            "subject": "Delivery System",
-            "name": "Shamoda"
-
-        }
-
-
-
-        EmailService.sendEmail(Email)
-            .then(res => {
-
-                console.log("Email Sent")
-            })
-
-
     }
 
     const onApprove = (data, actions) => {
@@ -62,14 +34,12 @@ const Checkout = (props) => {
 
             let Cart = JSON.parse(localStorage.getItem("cart"))
 
-            let deliveryMode = 'Uber'
+            let deliveryMode = localStorage.getItem('Delivery')
             let news = Cart.map(element => {
 
                 return { ...element, deliveryMode: deliveryMode, buyerAddress: Ship }
 
             });
-
-            sendEmail()  //Sending an email to the delivery service
 
             CartDataservice.createCart(news)
                 .then(response => {
@@ -78,30 +48,20 @@ const Checkout = (props) => {
                     history.push('/')
 
                 })
-
-
             //Clearing the cart
             let products = [];
             localStorage.setItem("cart", JSON.stringify(products))
-
-
         });
-
-
     }
 
     return (
 
-        <div className="app">
+        <div className="app" style={{ margin: 30 }}>
             <PayPalButton
                 createOrder={(data, actions) => createOrder(data, actions)}
                 onApprove={(data, actions) => onApprove(data, actions)}
             />
-
         </div>
-
-
     );
 }
-
 export default Checkout;

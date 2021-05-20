@@ -1,9 +1,9 @@
 import axios from 'axios'
 
-class ProductListDataService{
+class ProductListDataService {
 
-    retrieveAllProducts(query){
-        return axios.get(`http://localhost:8080/api/v1/product/search?query=${query}`);
+    retrieveAllProducts(query) {
+        return axios.get(`http://192.168.43.164:8280/products/search?query=${query}`);
     }
 
 }

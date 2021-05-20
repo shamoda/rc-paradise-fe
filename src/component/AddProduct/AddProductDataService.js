@@ -1,17 +1,18 @@
 import axios from 'axios'
 
-class AddProductDataService{
+class AddProductDataService {
 
-    uploadProduct(product){
-        return axios.post('http://localhost:8080/api/v1/product/add', product);
+    uploadProduct(product) {
+
+        return axios.post('http://192.168.43.164:8280/products/add', product);
     }
 
-    updateProduct(product){
-        return axios.put('http://localhost:8080/api/v1/product/update', product);
+    updateProduct(product) {
+        return axios.put('http://192.168.43.164:8280/products/update', product);
     }
 
-    getProduct(productId){
-        return axios.get(`http://localhost:8080/api/v1/product/${productId}`);
+    getProduct(productId) {
+        return axios.get(`http://192.168.43.164:8280/products/${productId}`);
     }
 
 }
