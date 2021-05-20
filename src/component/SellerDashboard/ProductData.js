@@ -82,7 +82,6 @@ export default function ProductData() {
 
                         <TableCell className={classes.tableHeaderCell}>Product Name</TableCell>
                         <TableCell className={classes.tableHeaderCell}>Quantity</TableCell>
-                        <TableCell className={classes.tableHeaderCell}>Buyer Name</TableCell>
                         <TableCell className={classes.tableHeaderCell}>Shipping Address</TableCell>
                         <TableCell className={classes.tableHeaderCell}>Delivery Mode</TableCell>
                     </TableRow>
@@ -91,10 +90,10 @@ export default function ProductData() {
                     {cart.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((c) => (
                         <TableRow key={c.pID}>
                             <TableCell align="center" className={classes.name} component="th" scope="row">{c.name} </TableCell>
-                            <TableCell component="th" scope="row">ggg </TableCell>
-                            <TableCell component="th" scope="row">ggg </TableCell>
-                            <TableCell component="th" scope="row">gg</TableCell>
-                            <TableCell component="th" scope="row">{c.buyerAddress} </TableCell>
+                            <TableCell component="th" scope="row">{c.quantity}</TableCell>
+                            <TableCell component="th" scope="row">{c.buyerAddress}</TableCell>
+                            <TableCell component="th" scope="row">{c.deliveryMode}</TableCell>
+
 
 
                         </TableRow>
