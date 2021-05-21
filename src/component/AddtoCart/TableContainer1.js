@@ -80,8 +80,6 @@ const TableContainer1 = (props) => {
 
                     <TableRow className={classes.TableRow}>
 
-
-
                     </TableRow>
                     <DeliveryForm value={props.value} handleChange={props.handleChange} />
                     <TableRow >
@@ -107,9 +105,7 @@ const TableContainer1 = (props) => {
                             </div>
 
                         ) : (
-
                             <button className="button" style={{ marginTop: -3 }} onClick={() => { props.handleSMS() }}> <span>Pay with Mobile </span>  <PhoneAndroidIcon /> </button>
-
                         )
                         }
                     </TableRow>

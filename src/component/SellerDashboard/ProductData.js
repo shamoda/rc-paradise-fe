@@ -45,10 +45,8 @@ const rows = [
 export default function ProductData() {
     const classes = useStyles();
     const [cart, setCart] = useState([])
-
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
-
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
@@ -59,7 +57,6 @@ export default function ProductData() {
         setPage(0);
     };
 
-
     useEffect(() => {
 
         CartDataservice.getCart(Authentication.loggedUserId())
@@ -69,10 +66,6 @@ export default function ProductData() {
                 }
             )
     }, [])
-
-
-
-
 
     return (
         <TableContainer style={{ width: 1200, marginLeft: 160 }} className={classes.tableContainer} component={Paper}>
@@ -93,15 +86,11 @@ export default function ProductData() {
                             <TableCell component="th" scope="row">{c.quantity}</TableCell>
                             <TableCell component="th" scope="row">{c.buyerAddress}</TableCell>
                             <TableCell component="th" scope="row">{c.deliveryMode}</TableCell>
-
-
-
                         </TableRow>
                     ))}
                 </TableBody >
                 <TableFooter>
                     <TablePagination
-
                         rowsPerPageOptions={[5, 10, 15]}
                         component="div"
                         count={rows.length}
@@ -109,10 +98,7 @@ export default function ProductData() {
                         page={page}
                         onChangePage={handleChangePage}
                         onChangeRowsPerPage={handleChangeRowsPerPage}
-
                     />
-
-
                 </TableFooter>
             </Table>
         </TableContainer>

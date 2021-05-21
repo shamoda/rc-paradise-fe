@@ -10,12 +10,7 @@ import logo from '../../asset/logo.PNG'
 import Authentication from '../../authentication/Authentication'
 <script src="https://kit.fontawesome.com/8f599a10dc.js" crossorigin="anonymous"></script>
 class NavBar extends Component {
-
-
-
-
     render() {
-
         const isUserLoggedIn = Authentication.isUserLoggedIn();
         const loggedUserRole = Authentication.loggedUserRole();
 
@@ -28,11 +23,7 @@ class NavBar extends Component {
         if (loggedUserRole != null && loggedUserRole === 'buyer') {
             loggedAsBuyer = true;
         }
-
-
         return (
-
-
             <div>
                 <Navbar className="navbg" expand="lg">
                     <Link className="name" to="/" ><img src={logo} width="100" height="100" alt="logo" /> RC Paradise</Link>
@@ -42,9 +33,6 @@ class NavBar extends Component {
                             {loggedAsBuyer && <Link className="nav-link" to="/Cart">
                                 <i class="fa" style={{ "fontSize": "24px" }} >&#xf07a;</i>
                                 <span class='badge badge-warning' id='lblCartCount'>{JSON.parse(localStorage.getItem('cart')).length}</span>
-
-
-
                             </Link>}
                             {loggedAsSeller && <Link className="nav-link" to="/myparadise">My Paradise</Link>}
                             {loggedAsSeller && <Link className="nav-link" to="/orders">Orders</Link>}
@@ -55,7 +43,6 @@ class NavBar extends Component {
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>
-
             </div >
         );
     }

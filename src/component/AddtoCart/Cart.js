@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { Alert } from 'reactstrap';
 import { Row, Container, Col } from 'react-bootstrap';
 import './Cart.css'
-import smsdataService from '../SMS/smsdataService';
+import smsdataService from '../SMS/SmsDataService';
 import Authentication from '../../authentication/Authentication'
 import TableContainer1 from './TableContainer1';
 import TableContainer2 from './TableContainer2';
