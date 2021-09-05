@@ -26,7 +26,7 @@ class NavBar extends Component {
         return (
             <div>
                 <Navbar className="navbg" expand="lg">
-                    <Link className="name" to="/" ><img src={logo} width="100" height="100" alt="logo" /> RC Paradise Updated</Link>
+                    <Link className="name" to="/" ><img src={logo} width="100" height="100" alt="logo" /> RC Paradise</Link>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" className="ml-auto" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="ml-auto">
